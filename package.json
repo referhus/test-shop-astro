@@ -1,0 +1,44 @@
+{
+  "name": "test-shop-astro",
+  "type": "module",
+  "version": "0.0.0",
+  "homepage": "https://test-shop-astro.netlify.app/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/referhus/test-shop-astro.git"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "now": "npm run build && npm run preview",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "npm run lint:fix && npm run format",
+    "lint:fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.0",
+    "@vue/eslint-config-typescript": "^14.7.0",
+    "@vue/tsconfig": "^0.8.1",
+    "eslint": "^10.0.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-oxlint": "~1.50.0",
+    "eslint-plugin-vue": "~10.8.0",
+    "jiti": "^2.6.1",
+    "prettier": "^2.8.4",
+    "sass": "^1.99.0",
+    "typescript": "^5.0",
+    "unplugin-auto-import": "^0.16.6",
+    "unplugin-vue-components": "^0.25.1",
+    "vite-plugin-vue-devtools": "^0.0.20",
+    "vue-tsc": "^1.2"
+  },
+  "dependencies": {
+    "@astrojs/vue": "^6.0.1",
+    "astro": "^6.0.0",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.32"
+  }
+}

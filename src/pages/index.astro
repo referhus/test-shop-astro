@@ -1,0 +1,12 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro'
+import ProductList from '../modules/product/components/ProductList.vue'
+import { INITIAL_ITEMS } from '../constants'
+
+---
+<DefaultLayout title="Каталог товаров">
+  <ProductList
+    client:load
+    initialProducts={INITIAL_ITEMS}
+  />
+</DefaultLayout>

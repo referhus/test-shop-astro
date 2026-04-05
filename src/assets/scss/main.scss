@@ -1,0 +1,47 @@
+@use 'fonts';
+@use 'variables';
+@use 'normalize.css';
+@use 'typography';
+@use 'text-ellipsis';
+
+::selection {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+body {
+  font-family: Gordita, sans-serif;
+  background-color: var(--color-white);
+  overflow-y: scroll;
+  overflow-x: clip;
+}
+
+.container {
+  max-width: 1408px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  gap: var(--page-gap);
+
+  @media (max-width: 920px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.main {
+  padding-top: var(--page-gap);
+  padding-bottom: var(--page-gap);
+}
+
+.flex-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}

@@ -1,0 +1,20 @@
+$lines: (1);
+
+@each $line in $lines {
+  .text-ellipsis-#{$line} {
+    -webkit-line-clamp: #{$line};
+    line-clamp: #{$line};
+
+    @extend .text-ellipsis;
+  }
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+}
