@@ -1,7 +1,12 @@
 <script setup lang="ts">
   import { useCartStore } from '@/modules/cart/stores/cart'
+  import { onMounted } from 'vue'
 
   const cartStore = useCartStore()
+
+  onMounted(() => {
+    cartStore.setStore()
+  })
 </script>
 
 <template>

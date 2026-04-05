@@ -1,13 +1,19 @@
 <script setup lang="ts">
   import AppButton from '@/components/shared/AppButton.vue'
   import { useCartStore } from '@/modules/cart/stores/cart'
-  import { computed } from 'vue'
+  import { computed, ref, onMounted } from 'vue'
   import type { ICartProduct, IProduct, IProductVariant } from '@/types/product'
 
   const props = defineProps<{
     product: IProduct
     currentVariant: IProductVariant
   }>()
+
+  const isLoading = ref(true)
+
+  onMounted(() => {
+    isLoading.value = false
+  })
 
   const cartStore = useCartStore()
 
@@ -24,16 +30,16 @@
         props.currentVariant.color,
   )
 
-  const btnText = computed(() =>
-    isVariantInCart.value ? 'Remove' : 'Add To Cart',
-  )
+  const btnText = computed(() => {
+    if (isLoading.value)
+      return 'Загрузка...'
+    return isVariantInCart.value ? 'Remove' : 'Add To Cart'
+  })
 
   function addToCart() {
     if (!isVariantInCart.value)
       cartStore.addToCart(props.product, props.currentVariant)
     else cartStore.removeFromCart(props.product.id)
-
-    console.log('product in cart', productInCartIndex.value)
   }
 </script>
 

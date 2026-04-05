@@ -1,10 +1,11 @@
 <script setup lang="ts">
   import ProductCard from './ProductCard.vue'
-  import { IProduct } from '@/types/product'
+  import type { IProduct } from '@/types/product'
   import ViewSwitch from '@/components/shared/view-switch/ViewSwitch.vue'
-  import { useCardsView } from '@/components/shared/view-switch/useViewSwitch.ts'
-  import { useCartStore } from '@/modules/cart/stores/cart.ts'
-  import { useProducts } from '@/modules/product/composables/useProducts.ts'
+  import { useCardsView } from '@/components/shared/view-switch/useViewSwitch'
+  import { useCartStore } from '@/modules/cart/stores/cart'
+  import { useProducts } from '@/modules/product/composables/useProducts'
+  import { onMounted } from 'vue'
 
   const props = defineProps<{
     initialProducts: IProduct[]
@@ -14,7 +15,10 @@
   const { products, setProducts } = useProducts()
 
   setProducts(props.initialProducts)
-  cartStore.setStore()
+
+  onMounted(() => {
+    cartStore.setStore()
+  })
 
   const cardsView = useCardsView()
 </script>
