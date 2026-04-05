@@ -11,7 +11,11 @@
 
 <template>
   <a href="/cart" class="cart-button">
-    <img src="/icons/cart.svg" alt="cart icon" loading="lazy" />
+    <img
+      src="/icons/cart.svg"
+      alt="cart icon"
+      loading="lazy"
+    />
     <span v-if="cartStore.getTotalQuantity" class="_has">
       {{ cartStore.getTotalQuantity }}
     </span>
@@ -21,6 +25,11 @@
 <style scoped lang="scss">
   .cart-button {
     position: relative;
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
 
     ._has {
       position: absolute;

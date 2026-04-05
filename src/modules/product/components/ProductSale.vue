@@ -2,7 +2,11 @@
 
 <template>
   <div class="product-sale flex-item flex-row">
-    <img src="/icons/percent.svg" alt="sale icon" loading="lazy" />
+    <img
+      src="/icons/percent.svg"
+      alt="sale icon"
+      loading="lazy"
+    />
     <span class="text_s">Sale</span>
   </div>
 </template>
@@ -16,5 +20,10 @@
     border-radius: 4px;
     background: var(--color-black);
     color: var(--color-white);
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
   }
 </style>
