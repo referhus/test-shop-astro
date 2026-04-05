@@ -2,7 +2,7 @@
   import AppButton from '@/components/shared/AppButton.vue'
   import { useCartStore } from '@/modules/cart/stores/cart'
   import { computed, ref, onMounted } from 'vue'
-  import type { ICartProduct, IProduct, IProductVariant } from '@/types/product'
+  import type { IProduct, IProductVariant } from '@/types/product'
 
   const props = defineProps<{
     product: IProduct
@@ -17,26 +17,24 @@
 
   const cartStore = useCartStore()
 
-  const productInCartIndex = computed(() =>
-    cartStore.cart?.findIndex(
-      (item: ICartProduct) => item.id === props.product.id,
-    ),
-  )
-  const isProductInCart = computed(() => productInCartIndex.value > -1)
+  const getProductInCartIndex = computed(() => cartStore.getProductInCartIndex(props.product.id))
+
   const isVariantInCart = computed(
     () =>
-      isProductInCart.value &&
-      cartStore.cart[productInCartIndex.value]?.color ===
+        cartStore.hasProductInCart(props.product.id) &&
+      cartStore.cart[getProductInCartIndex.value]?.color ===
         props.currentVariant.color,
   )
 
   const btnText = computed(() => {
     if (isLoading.value)
       return 'Загрузка...'
+
+
     return isVariantInCart.value ? 'Remove' : 'Add To Cart'
   })
 
-  function addToCart() {
+  function handlerClick() {
     if (!isVariantInCart.value)
       cartStore.addToCart(props.product, props.currentVariant)
     else cartStore.removeFromCart(props.product.id)
@@ -44,7 +42,7 @@
 </script>
 
 <template>
-  <AppButton class="product-button" @click="addToCart">
+  <AppButton class="product-button" @click="handlerClick">
     {{ btnText }}
   </AppButton>
 </template>

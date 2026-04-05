@@ -21,6 +21,9 @@ export const useCartStore = () => {
     )
     
     function addToCart(product: ICartProduct, currentVariant: IProductVariant) {
+      if (hasProductInCart(product.id))
+        cart.value.splice(getProductInCartIndex(product.id), 1)
+      
       cart.value.push({
         id: product.id,
         name: product.name,
@@ -43,7 +46,6 @@ export const useCartStore = () => {
     
     function syncLocalStorage() {
       tryLocalStorage(() => {
-        console.log(cart.value.length)
         localStorage.setItem(PRODUCTS_KEY, JSON.stringify(cart.value))
       })
     }
@@ -56,12 +58,24 @@ export const useCartStore = () => {
       })
     }
     
+    function getProductInCartIndex(id: number) {
+      return cart.value?.findIndex(
+        (item: ICartProduct) => item.id === id,
+      )
+    }
+    
+    function hasProductInCart(id: number) {
+      return getProductInCartIndex(id) > -1
+    }
+    
     return {
       cart,
       addToCart,
       removeFromCart,
       setStore,
       getTotalQuantity,
+      getProductInCartIndex,
+      hasProductInCart
     }
   })
   
