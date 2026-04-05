@@ -5,16 +5,13 @@ import { URL } from 'node:url'
 import netlify from '@astrojs/netlify';
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    vue(),
-  ],
-
+  integrations: [vue()],
+  output: 'server',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-
   vite: {
     css: {
       preprocessorOptions: {
@@ -24,6 +21,5 @@ export default defineConfig({
       },
     },
   },
-
   adapter: netlify(),
 })
