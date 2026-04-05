@@ -36,6 +36,7 @@
     "vue-tsc": "^1.2"
   },
   "dependencies": {
+    "@astrojs/netlify": "^7.0.6",
     "@astrojs/vue": "^6.0.1",
     "astro": "^6.0.0",
     "pinia": "^3.0.4",
