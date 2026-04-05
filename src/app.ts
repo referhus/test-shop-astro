@@ -1,5 +1,5 @@
 import { createPinia } from 'pinia'
-import App from './App.vue'
+import { type App } from 'vue'
 
 export default (app: App) => {
   app.use(createPinia())
