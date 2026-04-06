@@ -5,7 +5,6 @@ export function useProductVariant(variants: IProductVariant) {
   const currentVariant = ref(variants[0])
 
   function changeVariant(variant: IProductVariant) {
-    console.log(variant)
     currentVariant.value = variant
   }
 

@@ -4,16 +4,22 @@
 </script>
 
 <template>
-  <header class="header container flex-row">
-    <AppLogo />
-    <CartLink />
+  <header class="header">
+    <div class="container flex-row">
+      <AppLogo />
+      <CartLink />
+    </div>
   </header>
 </template>
 
 <style lang="scss" scoped>
   .header {
-    justify-content: space-between;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-stroke);
+
+    .container {
+      justify-content: space-between;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
   }
 </style>

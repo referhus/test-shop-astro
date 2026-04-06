@@ -114,6 +114,8 @@
       'area-image area-variants area-button';
     grid-template-columns: 164px 1fr 152px;
     grid-template-rows: 1fr 56px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-stroke);
 
     @media (max-width: 600px) {
       grid-template-areas:
@@ -124,6 +126,7 @@
       grid-template-columns: 100px 1fr;
       grid-template-rows: 1fr 28px 40px 40px;
       gap: 8px;
+      padding-bottom: 16px;
     }
 
     .product-card__image {
